@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shooter Game</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="code.js" defer></script>
+</head>
+<body>
+
+<div id="game-container">
+    <!-- WELCOME SCREEN -->
+    <div id="welcome-screen">
+        <h1>SHOOTER</h1>
+
+        <div class="input-group">
+            <label for="username" class="sr-only">Username</label>
+            <input type="text" id="username" placeholder="Input Username" aria-label="Username">
+        </div>
+
+        <div class="input-group">
+            <label for="level" class="sr-only">Select Level</label>
+            <select id="level" aria-label="Select Level">
+                <option value="" disabled selected>Select Level</option>
+                <option value="easy">Easy (30s)</option>
+                <option value="medium">Medium (20s)</option>
+                <option value="hard">Hard (15s)</option>
+            </select>
+        </div>
+
+        <div class="selection-row">
+            <div class="selection-group">
+                <label>Gun Type</label>
+                <div class="options" id="gun-options">
+                    <button class="option-btn" data-gun="pistol" aria-label="Pistol">Pistol</button>
+                    <button class="option-btn" data-gun="rifle" aria-label="Rifle">Rifle</button>
+                </div>
+            </div>
+            <div class="selection-group">
+                <label>Target Type</label>
+                <div class="options" id="target-options">
+                    <button class="option-btn" data-target="dart" aria-label="Dart Board">🎯</button>
+                    <button class="option-btn" data-target="archery" aria-label="Archery Target">⭕</button>
+                    <button class="option-btn" data-target="bullseye" aria-label="Bullseye">❌</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button class="btn btn-primary" id="play-btn" disabled>Play Game</button>
+            <button class="btn btn-secondary" id="instruction-btn">Instruction</button>
+            <button class="btn btn-secondary" id="history-btn">History</button>
+        </div>
+    </div>
+
+    <!-- POPUP -->
+    <div id="instruction-popup" role="dialog" aria-modal="true" aria-labelledby="instruction-title">
+        <button class="close-btn" id="close-instruction" aria-label="Close Instructions">X</button>
+        <h2 id="instruction-title">How to play the game</h2>
+        <ul>
+            <li>Input Username</li>
+            <li>Point the pointer at the target</li>
+            <li>Click to shoot</li>
+            <li>Get as many points as possible</li>
+            <li>Press ESC to pause</li>
+            <li>Press SPACE to change gun</li>
+            <li>Enjoy!</li>
+        </ul>
+    </div>
+
+    <!-- UI -->
+    <div id="game-ui">
+        <div id="hud">
+            <div class="hud-item">Player Name: <span id="hud-player">User</span></div>
+            <div class="hud-item">Score: <span id="hud-score">0</span></div>
+            <div class="hud-item">Gun: <span id="hud-gun">Pistol</span></div>
+            <div class="hud-item">Time: <span id="hud-time">0</span>s</div>
+        </div>
+
+        <div id="gameboard">
+            <div id="crosshair"></div>
+            <div id="gun">🔫</div>
+            <div id="countdown">3</div>
+
+            <div id="shoot-history-panel">
+                <h4>Shoot History</h4>
+                <ul id="shoot-history-list"></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAUSE -->
+    <div id="pause-popup" role="dialog" aria-modal="true">
+        <h2>Game Paused</h2>
+        <button class="btn btn-primary" id="continue-btn">Continue</button>
+    </div>
+
+    <!-- GAME OVER-->
+    <div id="gameover-popup" role="dialog" aria-modal="true">
+        <h2>Game Over</h2>
+        <p>Player: <span id="final-player"></span></p>
+        <p>Final Score: <span id="final-score"></span></p>
+        <div class="action-buttons" style="justify-content: center;">
+            <button class="btn btn-primary" id="save-score-btn">Save Score</button>
+            <button class="btn btn-secondary" id="restart-btn">Restart</button>
+        </div>
+    </div>
+
+    <!-- MATCH HISTORY -->
+    <div id="history-popup" role="d POPUP ialog" aria-modal="true">
+        <button class="close-btn" id="close-history" aria-label="Close History">X</button>
+        <h2>Match History</h2>
+        <div class="sort-controls">
+            <button id="sort-score" class="active">Sort by Score</button>
+            <button id="sort-last">Last Matches</button>
+        </div>
+        <ul id="history-list"></ul>
+        <div style="text-align: center;">
+            <button class="btn btn-secondary" id="clear-history-btn" style="font-size: 12px; padding: 5px 10px;">Clear History</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
